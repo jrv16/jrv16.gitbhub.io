@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<head>
+<script src="/assets/jquery.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Londrina+Shadow' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Charm|Francois+One|Rokkitt" rel="stylesheet">
+<style>
+body {
+  font-family: helvetica, sans-serif;
+  margin: 0 auto;
+  max-width: 600px;
+  background: red;
+}
+
+ul {
+      padding: 10px;
+      background: rgba(0,0,0,33);
+      text-align:center;
+    }
+    li {
+      display: inline;
+      padding: 0px 10px 0px 10px;
+    }
+    
+div {
+  height: 330px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+h1 {
+  font-family: 'Charm', cursive;
+  text-align: center;
+  font-size: 75px;
+  color: black;
+  margin: 60px 0 0 0;
+}
+h2 {
+  text-align: center;
+  color: #bbbbbb;
+  margin: 0px 0 70px 0;
+  font-family: 'Francois One', sans-serif;
+}
+p {
+  color:pink;
+  background: black;
+  background: linear-gradient(bottom, rgba(0,225,0,1), rgba(0,0,225,.4));
+  background: -webkit-linear-gradient(bottom, rgba(0,222,0,1), rgba(0,0,0,.4));
+  background: -moz-linear-gradient(bottom, rgba(0,222,0,1), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+  font-family: 'Rokkitt', serif
+}
+
+small {
+  opacity: 0;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+
+
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+    color: black;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+    
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+    color: red;
+  }
+  small {
+    font-size: 16px;
+    color:red;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+ <ul>
+      <li><button onclick=popular()>popular</button></li>
+      <li><button onclick=talented()>talented</button></li>
+      <li><button onclick=underrated() >underrated</button></li>
+    </ul>
+<h1> Music</h1>
+<h2>All around the world</h2>
+
+<div id="music">
+
+</div>
+
+<script>
+  popularImages = [
+    'url("https://www.mercurynews.com/wp-content/uploads/2018/03/beyonce.jpg")',
+     'url("https://www.irishtimes.com/polopoly_fs/1.3520128.1528206115!/image/image.jpg_gen/derivatives/box_620_330/image.jpg")',
+      'url("https://www.billboard.com/files/styles/article_main_image/public/media/drake-2018-Vanity-Fair-Oscar-Party-billboard-1548.jpg")',
+  ]
+  
+  talentedImages = [
+     'url("http://cloud.honolulupulse.com/wp-content/uploads/2014/04/0422-bruno-mars.jpg")',
+     'url("http://celebrityinsider.org/wp-content/uploads/2019/02/chris-brown-.jpg")',
+      'url("http://thesource.com/wp-content/uploads/2018/06/Rihanna.jpg")',  
+  ]
+  
+   underratedImages = [
+     'url("https://thefader-res.cloudinary.com/private_images/w_760,c_limit,f_auto,q_auto:best/H.E.R._ndc1ph/her-i-used-to-know-her-highsnobiety-interview.jpg")',
+     'url("https://66.media.tumblr.com/33a72634d5b1b56218d2d7b4e9b8fcd3/tumblr_inline_ph2fn6ZmHM1s9on4d_540.jpg")',
+      'url("http://goodmomusic.net/wp-content/uploads/2017/02/DEAN.jpg")',  
+  ]
+  popularDivs = [
+    '<div class="item" onclick=this.classList.toggle("show-description")><p>beyonce<span class="price">$20</span><br /><small>fresh lobster grilled or steamed with a butter gaarlic sauce that is amazing. That comes withh fries and a fresh salad. </small></p></div>',
+    '<div class="item"onclick=this.classList.toggle("show-description")><p>taylor swift <span class="price">$20</span><br /><small>fresh lobster role with delious sauce added with fries and a fresh salad</small></p></div>',
+    '<div class="item" onclick=this.classList.toggle("show-description")<p>drake<span class="price">$20</span><br /><small>delicious juicy burger with hot fries and a fresh salad</small></p></div>',
+    ]
+  talentedDivs= [
+    '<div class="item" onclick=this.classList.toggle("show-description")><p>bruno mars<span class="price">$20</span><br /><small>fresh lobster grilled or steamed with a butter gaarlic sauce that is amazing. That comes withh fries and a fresh salad. </small></p></div>',
+    '<div class="item"onclick=this.classList.toggle("show-description")<p>chris brown<span class="price">$20</span><br /><small>fresh lobster role with delious sauce added with fries and a fresh salad</small></p></div>',
+    '<div class="item" onclick=this.classList.toggle("show-description")<p>rihanna<span class="price">$20</span><br /><small>delicious juicy burger with hot fries and a fresh salad</small></p></div>',
+  ]  
+  underratedDivs= [
+    '<div class="item" onclick=this.classList.toggle("show-description")><p>her<span class="price">$20</span><br /><small>fresh lobster grilled or steamed with a butter gaarlic sauce that is amazing. That comes withh fries and a fresh salad. </small></p></div>',
+    '<div class="item" onclick=this.classList.toggle("show-description")<p>summer walker<span class="price">$20</span><br /><small>fresh lobster role with delious sauce added with fries and a fresh salad</small></p></div>',
+    '<div class="item" onclick=this.classList.toggle("show-description")<p>dean<span class="price">$20</span><br /><small>delicious juicy burger with hot fries and a fresh salad</small></p></div>',
+  ]  
+  
+  
+  
+  function popular() {
+    pop = document.getElementById("music")
+    pop.innerHTML = ""
+    pop.innerHTML += popularDivs[0]
+    pop.innerHTML += popularDivs[1]
+    pop.innerHTML += popularDivs[2]
+    items = document.getElementsByClassName ("item")
+    
+    for (i=0; i<3; i=i+1) {
+    items[i].style.background = popularImages[i]
+    items[i].style.backgroundSize = '100% 100%'
+    }
+  
+  }
+  
+  function talented() {
+    tal = document.getElementById("music")
+    tal.innerHTML = ""
+    tal.innerHTML += talentedDivs[0]
+    tal.innerHTML += talentedDivs[1]
+    tal.innerHTML += talentedDivs[2]
+    items = document.getElementsByClassName ("item")
+    for (i=0; i<3; i=i+1) {
+    items[i].style.background = talentedImages[i]
+    items[i].style.backgroundSize = '100% 100%'
+    }
+  }
+    
+  
+  function underrated() {
+    under = document.getElementById("music")
+    under.innerHTML = ""
+    under.innerHTML += underratedDivs[0]
+    under.innerHTML += underratedDivs[1]
+    under.innerHTML += underratedDivs[2]
+    items = document.getElementsByClassName ("item")
+    for (i=0; i<3; i=i+1) {
+    items[i].style.background = underratedImages[i]
+    items[i].style.backgroundSize = '100% 100%'
+    }
+  }
+  
+
+  
+</script>
+
+</body>
