@@ -8,8 +8,8 @@
 /**************************************
 link & button
 **************************************/
-.row {
-	margin-left: 30px;
+.container {
+	overflow: hidden;
 }
 body {
 	color:#0A0A0A;
