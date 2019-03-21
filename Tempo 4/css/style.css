@@ -8,6 +8,9 @@
 /**************************************
 link & button
 **************************************/
+.row {
+    margin: -15px;    /*Mr. R used to offset built-in row extra 15px margin on some bootstrap templates*/ 
+}
 body {
 	color:#0A0A0A;
 }
