@@ -10,6 +10,11 @@ link & button
 **************************************/
 .row {
     padding: -15px;    /*Mr. R used to offset built-in row extra 15px margin on some bootstrap templates*/ 
+    margin: -15px;
+}
+.container {
+    padding: -15px;
+    margin: -15px;
 }
 body {
 	color:#0A0A0A;
