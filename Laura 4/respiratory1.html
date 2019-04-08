@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<head>
+<script src="/assets/jquery.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Londrina+Shadow' rel='stylesheet' type='text/css'>
+
+<style>
+body {
+  font-family: 'Gloria Hallelujah', cursive;
+  margin: 0 auto;
+  max-width: 600px;
+  background: #232323;
+}
+div {
+  height: 300px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+ul {
+  padding: 10px;
+  background:rgba(0, 0, 0, 0.5);
+  text-align: center;
+  }
+li {
+  display: inline;
+  padding: 0px 10px 0px 10px;
+  }
+h1 {
+  font-family: 'Courgette', cursive;
+  text-align: center;
+  font-size: 75px;
+  color: #aaaaaa;
+  margin: 60px 0 0 0;
+}
+h2 {
+  text-align: center;
+  color: #bbbbbb;
+  margin: 0px 0 70px 0;
+}
+p {
+  color: rgba(255,255,255,1);
+  background: black;
+  background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+small {
+  opacity: 0;
+}
+.show-description p {
+  height: 150px;
+}
+.show-description small {
+  opacity: 1;
+}
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    
+  }
+  small {
+    font-size: 16px;
+  }
+}
+</style>
+
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+<ul>
+<li><button onclick=appetizers()>appetizers</button></li>
+<li><button onclick=drinks()>drinks</button></li>
+<li><button onclick=desserts()>desserts</button></li>
+<li><button onclick=Breakfasts()>Breakfasts</button></li>
+</ul>
+<h1>Jordi's restaurant</h1>
+<h2>A place to eat at.</h2>
+<div id="food"> </div>
+<script> 
+appetizersImages = [
+  'url("https://d1bjorv296jxfn.cloudfront.net/s3fs-public/styles/recipes_header_image/public/375-Roasted-Ratatouille-and-Mozzarella-Appetizers.jpg?itok=MR9hitXt")',
+	'url("https://keyingredient.blob.core.windows.net/recipe/JpaiZICTmtZ1X7CgM-qfjzUp4nC7W7rnzgJaws6yRKDHt5r8x2pWN_3ZdrxFtZxTjJul-65F1MtU8XGLtMsQmOvPEak")',
+	'url("https://images-gmi-pmc.edge-generalmills.com/2f44543b-5a89-4fe0-bb35-d9559a1808ab.jpg")',
+	]
+drinksImages = [
+  'url("https://tipsybartender.com/wp-content/uploads/2018/01/Caribbean-Sunset.jpg")',
+	'url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/shutterstock-626261780mod-1515166546.jpg")',
+	'url("https://www.benihana.com/wp-content/uploads/2016/11/Ocean-Punch-Bowl-2016.jpg")',
+	]
+dessertsImages = [
+  'url("https://images-gmi-pmc.edge-generalmills.com/c2462c96-4a12-484b-ad78-4bbc2ce6505f.jpg")',
+	'url("https://images-gmi-pmc.edge-generalmills.com/817d708a-33e6-46f7-b985-0360b6c55cf4.jpg")',
+	'url("http://assets.kraftfoods.com/recipe_images/opendeploy/127640_640x428.jpg")',
+	]
+BreakfastsImages = [
+	  'url("https://d9hyo6bif16lx.cloudfront.net/live/img/production/detail/menu/breakfast_breakfast-classics_big-two-do-breakfast.jpg")',
+	  'url("https://d1doqjmisr497k.cloudfront.net/-/media/mccormick-us/recipes/mccormick/q/800/quick-and-easy-french-toast-800x800.ashx?vd=20181119T193123Z&hash=003892B6BAE65C9DC3C8D08A669F1DB68FCD69B5")',
+	  'url("https://assets.epicurious.com/photos/5aa0123546f7f97233c0ba07/master/pass/breakfast-grilled-cheese-with-soft-scrambled-eggs-recipe-BA-030718.jpg")',
+	  'url("https://www.sciencedaily.com/images/2018/08/180820085243_1_540x360.jpg")',
+	  ]
+function appetizers() {
+  eat = document.getElementById("food")
+   eat.innerHTML = ''
+eat.innerHTML += appetizersDivs[0]
+eat.innerHTML += appetizersDivs[1]
+eat.innerHTML += appetizersDivs[2]
+  //alert("appetizers!")
+  items = document.getElementsByClassName("item")
+	for (i=0; i<3; i=i+1) {
+		items[i].style.background = appetizersImages[i]
+		items[i].style.backgroundSize = '100% 100%'
+		}
+	}
+function drinks() {
+    eat = document.getElementById("food")
+   eat.innerHTML = ''
+eat.innerHTML += drinksDivs[0]
+eat.innerHTML += drinksDivs[1]
+eat.innerHTML += drinksDivs[2]
+  //alert("drinks!")
+  for (i=0; i<3; i=i+1) {
+		items[i].style.background = drinksImages[i]
+		items[i].style.backgroundSize = '100% 100%'
+		}
+}
+function desserts() {
+    eat = document.getElementById("food")
+   eat.innerHTML = ''
+eat.innerHTML += dessertsDivs[0]
+eat.innerHTML += dessertsDivs[1]
+eat.innerHTML += dessertsDivs[2]
+  //alert("desserts!")
+  for (i=0; i<3; i=i+1) {
+		items[i].style.background = dessertsImages[i]
+		items[i].style.backgroundSize = '100% 100%'
+		}
+}
+function Breakfasts() {
+  eat = document.getElementById("food")
+   eat.innerHTML = ''
+eat.innerHTML += BreakfastsDivs[0]
+eat.innerHTML += BreakfastsDivs[1]
+eat.innerHTML += BreakfastsDivs[2]
+eat.innerHTML += BreakfastsDivs[3]
+  //alert("Breakfasts!")
+	for (i=0; i<3; i=i+1) {
+		items[i].style.background = BreakfastsImages[i]
+		items[i].style.backgroundSize = '100% 100%'
+		}
+}
+appetizersDivs = [
+'<div class="item"onclick=this.classList.toggle("show-description")><p>Appetizers 1<span class="price">$8</span><br /><small>An appetizers with eggplants, zucchini, peppers, with cheese on the top, etc. </small></p></div>','<div class="item"onclick=this.classList.toggle("show-description")><p>Appetizers 2<span class="price">$12</span><br /><small>Crescent rolls with many different ingredients for example:mozerella balls, grape tomatoes, basil leaf piece.</small></p></div>','<div class="item"onclick=this.classList.toggle("show-description")><p>appetizers 3 <span class="price">$5</span><br /><small>crescent roll with meatball and sauce and a piece of avocato on it.</small></p></div>',
+]
+drinksDivs = [
+  '<div class="item"onclick=this.classList.toggle("show-description")><p>drinks 1<span class="price">$14</span><br /><small>Drink with blue on the top and yellow on the top with a lemon on it. </small></p></div>','<div class="item"onclick=this.classList.toggle("show-description")><p>drinks 2<span class="price">$22</span><br /><small>A drink made of tequilla. It has tequilla, fresh orange juice and grenadine.</small></p></div>','<div class="item"onclick=this.classList.toggle("show-description")><p>drinks 3 <span class="price">$8</span><br /><small>A fruit punch with a variety of different types of tropical fruit juice and oranges on it.</small></p></div>',  
+  ]
+  dessertsDivs = [
+  '<div class="item"onclick=this.classList.toggle("show-description")><p>desserts 1<span class="price">$8</span><br /><small>Chocolate cake with chocalate fudge ad whiped cream on the side. </small></p></div>','<div class="item"onclick=this.classList.toggle("show-description")><p>desserts 2<span class="price">$10</span><br /><small>Chocalate cake with chocalate icing and whipped cream with chocolate chips on it.</small></p></div>','<div class="item"onclick=this.classList.toggle("show-description")><p>desserts 3 <span class="price">$7</span><br /><small>A cake with three different layers of flavors. It has vanilla, chocolate, and coffee and whipped cream with almonds on the top.</small></p></div>',  
+  ]
+  BreakfastsDivs = [
+  '<div class="item"onclick=this.classList.toggle("show-description")><p>Breakfasts 1<span class="price">$8</span><br /><small>Pancakes with syrup and butter on the top with bacon and eggs on the side.</small></p></div>','<div class="item"onclick=this.classList.toggle("show-description")><p>Breakfasts 2<span class="price">$4</span><br /><small>French toast with honey on top with berries to the side.</small></p></div>','<div class="item"onclick=this.classList.toggle("show-description")><p>Breakfasts 3 <span class="price">$2</span><br /><small>A grilled sheese sandwitch.</small></p></div>','<div class="item"onclick=this.classList.toggle("show-description")><p>Breakfasts 4<span class="price">$8</span><br /><small>Cereal with milk.</small></p></div>',  
+  ]
+</script>
+
+</body>
